@@ -18,3 +18,12 @@ function getFirstItem(items) {
 // const itemFirst = getFirstItem(products)
 var itemFirst2 = getFirstItem([["John", 20], ["Jane", 30]]);
 console.log(itemFirst2);
+// learned -> we should know it all in return types since that is always explicitly set for safetyness
+// The search tool
+// keyOf -> extract the key type of a type object
+//   | property: keyof Person -> expects the param to be string === prop
+//    { id: 1, name: "Mechanical Keyboard", price: 120, category: "electronics", inStock: true },
+function filterByProperty(items, key, value) {
+    return items.filter(function (items) { return items[key] === value; });
+}
+console.log(filterByProperty(products, "name", "Mechanical Keyboard"));

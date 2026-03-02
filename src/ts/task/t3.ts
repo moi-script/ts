@@ -62,5 +62,18 @@ console.log(itemFirst2)
 
 // The search tool
 
+// keyOf -> extract the key type of a type object
+//   | property: keyof Person -> expects the param to be string === prop
 
-function filterByProperty<T, K extends keyof T>(items : T[], key : K, value : T[K])
+
+//    { id: 1, name: "Mechanical Keyboard", price: 120, category: "electronics", inStock: true }
+function filterByProperty<T, K extends keyof T>(items : T[], key : K, value : T[K]) : T[] {
+    return items.filter(items => items[key] === value)
+}
+
+console.log(filterByProperty(products, "name", "Mechanical Keyboard"))
+
+
+
+
+// 
