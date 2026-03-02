@@ -11,3 +11,10 @@ function getPriceBudget(items, budget) {
 }
 var affordable = getPriceBudget(products, 100);
 console.log("Affordable products :: ", affordable);
+function getFirstItem(items) {
+    console.log("flat :", items.flat()); // .flat() return either string | number or any, so not matched with TE type
+    return items.flat();
+}
+// const itemFirst = getFirstItem(products)
+var itemFirst2 = getFirstItem([["John", 20], ["Jane", 30]]);
+console.log(itemFirst2);
