@@ -16,10 +16,11 @@ function print(...args : any[]) : void {
 }
 
 function typeCheck( args : TypeTest) : void {
+    print("Doing type checked")
     if(args.task === "Email") {
         print("Recipient exist? : ", args.isRecipient)
     } else {
-        print("System command")
+        print("System command", "Delayed")
         args.delay(2000)
     }
 }
@@ -27,7 +28,7 @@ function typeCheck( args : TypeTest) : void {
 
 function timer(delayCount : number) : TimerType {
     return setTimeout(() => {
-        print("Delayed..")
+        print("Done")
     }, delayCount)
 }
 
