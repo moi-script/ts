@@ -76,4 +76,135 @@ console.log(filterByProperty(products, "name", "Mechanical Keyboard"))
 
 
 
-// 
+// Utility Types 
+
+
+// Partial<T> -> Makes properties optional for T // you makes a type accepted for smaller field
+// Pick<T, K> -> Creates a new type by picking specific keys from T.
+
+
+type User = {
+    id : number,
+    username : string,
+    email : string,
+    password : string 
+}
+
+type LoginResponse = Pick<User, "username" | "password" >
+
+function login(user : LoginResponse) : boolean {
+    return user.username === "john"
+}
+console.log(login({username : "john", password : 'test123'})) // you create a types that needs to be accepted
+
+// Omit<T, K> -> Creates a new type by removing specific keys from T
+
+
+
+console.log(typeof (parseInt('1000', 10) as number))
+
+
+
+
+// Map types --> create new types by transforming properties of existing types 
+
+
+
+// Transform value
+type Flag<T> = {
+    [K in keyof T] : boolean
+}
+interface UserInfo {
+    id :number,
+    name : string,
+    email : string
+}
+
+
+type typeFlags = Flag<UserInfo>;
+
+
+const flags : typeFlags = {
+    id : true,
+    name : true,
+    email : true
+}
+
+// Makes properties optional
+
+
+interface UserForChange {
+    price : number,
+    count : number,
+    address : string,
+}
+
+
+type ToChange = {
+    [K in keyof UserForChange]? : UserForChange[K]
+} // all properties of UserForChange is optional now
+
+
+const testChanges : ToChange = {
+    price : 100 // officially 
+}
+
+// adding readonly 
+type AddReadOnly<T> = {
+    +readonly [K in keyof T]-? : T[K] // -? this removes the optional field
+}
+
+// must requires all types 
+const readToChange : AddReadOnly<ToChange> = {
+    price : 1000,
+    count : 100,
+    address : "test"
+}
+
+
+
+
+
+
+// test generic object and data
+
+
+
+type TestType<T extends string> = {
+    data :  T
+}
+
+const unmovedType : TestType<string> = {
+    data : "hello world1"
+}
+
+// console.log(unmovedType)
+
+interface Person {
+    id : number,
+    name : string,
+    email : string
+}
+
+// set the prop to function === Getters
+type Getters<T> = {
+    [K in keyof T as `get${Capitalize<string & K>}`] : () => T[K]
+}
+type UsersGetters = Getters<Person>
+
+// Filter out function only
+type methodOnly<T> = {
+    [K in keyof T as T[K] extends Function ? K : never] : T[K] 
+}
+type MethodToOptions<T> = {
+    [K in keyof T]? : T[K] // this becomes optional fn => number | undefined
+}
+const res : MethodToOptions<methodOnly<UsersGetters>> = {
+    getId : () : number => 100 
+}
+
+console.log(res.getId?.())
+
+
+
+

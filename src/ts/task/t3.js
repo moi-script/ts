@@ -1,4 +1,5 @@
 // Define the interface 
+var _a;
 var products = [
     { id: 1, name: "Mechanical Keyboard", price: 120, category: "electronics", inStock: true },
     { id: 2, name: "Coding Hoodie", price: 45, category: "clothing", inStock: true },
@@ -22,8 +23,35 @@ console.log(itemFirst2);
 // The search tool
 // keyOf -> extract the key type of a type object
 //   | property: keyof Person -> expects the param to be string === prop
-//    { id: 1, name: "Mechanical Keyboard", price: 120, category: "electronics", inStock: true },
+//    { id: 1, name: "Mechanical Keyboard", price: 120, category: "electronics", inStock: true }
 function filterByProperty(items, key, value) {
     return items.filter(function (items) { return items[key] === value; });
 }
 console.log(filterByProperty(products, "name", "Mechanical Keyboard"));
+function login(user) {
+    return user.username === "john";
+}
+console.log(login({ username: "john", password: 'test123' })); // you create a types that needs to be accepted
+// Omit<T, K> -> Creates a new type by removing specific keys from T
+console.log(typeof parseInt('1000', 10));
+var flags = {
+    id: true,
+    name: true,
+    email: true
+};
+var testChanges = {
+    price: 100 // officially 
+};
+// must requires all types 
+var readToChange = {
+    price: 1000,
+    count: 100,
+    address: "test"
+};
+var unmovedType = {
+    data: "hello world1"
+};
+var res = {
+    getGetId: function () { return 100; }
+};
+console.log((_a = res.getGetId) === null || _a === void 0 ? void 0 : _a.call(res));
