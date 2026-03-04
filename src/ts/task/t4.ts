@@ -71,3 +71,37 @@ console.log(returnTypeCheck<TypeCheck>({type :"Person", roles : ["technician"]})
 
 
 
+
+
+
+
+interface data  {
+  name : string,
+  address? : string,
+  email : string
+}
+
+interface error  {
+  message : string,
+  code : number
+}
+
+
+type success<T> = {
+  success : boolean,
+  data : T
+}
+
+type erroMsg<T> = {
+  success : boolean,
+  error : T
+}
+
+
+
+type API_Response<T, K> = {
+  success? : (data : T) => T,
+  error? : (message : K, code : K) => K
+} 
+
+// function handleResponse<T>(response  )
