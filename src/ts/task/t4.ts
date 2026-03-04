@@ -67,4 +67,7 @@ function returnTypeCheck<T>(args : T) : T {
   return args
 }
 
-console.log(returnTypeCheck<TypeCheck>({type :"Person", roles : ["technician"]}))
+console.log(returnTypeCheck<TypeCheck>({type :"Person", roles : ["technician"]})) 
+
+
+

@@ -1,0 +1,6 @@
+
+Moving next to translation of js to typescript
+
+* object manipulation
+* serverside -> express
+* react ts
