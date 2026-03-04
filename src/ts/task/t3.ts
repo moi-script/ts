@@ -207,4 +207,32 @@ console.log(res.getId?.())
 
 
 
+// Conditional types 
 
+interface ApiResponse {
+    data : unknown,
+    status : number, 
+    message : string,
+    timestamp : number
+}
+
+type FormatResponse<T> = {
+    [K in keyof T] : T[K] extends string ? number : T[K] // using Ternary 
+}
+
+// Key mapping 'as'
+type StringPropsOnly<T> = {
+    [K in keyof T as T[K] extends string ? K : never] : T[K]   // never here when met will drop the key or delete it
+ }
+
+
+
+// Type Transformation: Modify property types in bulk
+// Property Modifiers: Add or remove readonly and ? modifiers
+// Key Remapping: Rename or filter properties using 'as' clauses
+// Composition: Combine with other TypeScript features
+// Creating read-only versions of types
+// Making all properties optional or required
+// Transforming property types (e.g., to nullable or readonly)
+// Filtering properties based on their types
+// Creating type-safe utility functions
