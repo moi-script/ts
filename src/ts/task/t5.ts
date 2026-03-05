@@ -60,6 +60,8 @@ const user = createUser("Moises",21);
 // console.log(user.name)
 // console.log(user.age)
 
+
+
 // function printId(id) {
 //   if (typeof id === "number") {
 //     console.log("Numeric ID:", id)
@@ -70,3 +72,96 @@ const user = createUser("Moises",21);
 
 // printId(101)
 // printId("abc123")
+
+
+function printId(id : string | number) : void {
+    if(typeof id === 'number'){
+        console.log("Numeric ID : ", id)
+    } else {
+        console.log("String ID : ", id.toUpperCase())
+
+    }
+}
+
+
+// printId(101)
+// printId("abc123")
+
+
+
+// function getFirstItem(items) {
+//   return items[0]
+// }
+
+const numbers = [10, 20, 30]
+// const firstNumber = getFirstItem(numbers)
+
+const names = ["Alice", "Bob", "Charlie"]
+// const firstName = getFirstItem(names)
+
+// console.log(firstNumber)
+// console.log(firstName)
+
+
+// function getFirstItem(items : number[] | string[]) : number | string { // this becomes loosely types needs new approachh
+//         return items[0] 
+// }
+
+// console.log(firstName)
+
+
+
+
+function getFirstItemType<T>(items : T[]) : T { // this becomes loosely types needs new approachh
+        return items[0]  // auto infer the type to return
+}
+
+const firstItem = getFirstItemType(numbers)
+console.log(firstItem) // Explicit generics are only needed when TypeScript cannot infer the type.
+//  getFirstItemType(numbers) 
+
+// safer version when ready to have some loop hole like undefined
+
+function getFirstItemTypes<T>(items: T[]): T | undefined {
+  return items[0]
+}
+
+
+
+
+
+// function getProperty(obj, key) {
+//   return obj[key]
+// }
+
+// const user = {
+//   name: "Moises",
+//   age: 21,
+//   role: "engineer"
+// }
+
+// const value = getProperty(user, "name")
+// console.log(value)
+
+
+
+interface UserInfo {
+    name : string,
+    age : number,
+    role : string
+}
+
+function getProperty<T, K extends keyof T >(obj : T, key : K) : T[K] {
+    return obj[key]
+} 
+
+const userInfo : UserInfo = {
+    name : "John",
+    age : 21,
+    role : "Fullstack Developer"
+}
+const name = getProperty(userInfo, "name");
+const age = getProperty(userInfo, "age");
+const role = getProperty(userInfo, "role");
+
+
