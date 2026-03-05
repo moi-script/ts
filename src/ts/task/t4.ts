@@ -71,10 +71,6 @@ console.log(returnTypeCheck<TypeCheck>({type :"Person", roles : ["technician"]})
 
 
 
-
-
-
-
 interface data  {
   name : string,
   address? : string,
