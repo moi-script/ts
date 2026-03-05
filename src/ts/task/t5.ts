@@ -165,3 +165,80 @@ const age = getProperty(userInfo, "age");
 const role = getProperty(userInfo, "role");
 
 
+
+
+
+
+// function processEvent(event) {
+//   if (event.type === "login") {
+//     console.log("User logged in:", event.username)
+//   }
+
+//   if (event.type === "logout") {
+//     console.log("User logged out:", event.userId)
+//   }
+// }
+
+// processEvent({
+//   type: "login",
+//   username: "moises"
+// })
+
+// processEvent({
+//   type: "logout",
+//   userId: 42
+// })
+
+type Login = {
+    type : "Login",
+    username : string
+}
+
+type Logout = {
+    type : "Logout",
+    userId : number
+}
+
+
+type processEvent =  (Login | Logout)
+
+const process : processEvent = {
+    username : "John",
+    type : "Login",
+}
+
+function fnProcessEvent(event : processEvent) : void {
+    if(event.type === "Login") {
+           console.log("User logged in:", event.username)
+
+    } 
+    if(event.type === "Logout") {
+            console.log("User logged out:", event.userId)
+    } // we can use the switch statement better here since it has exhaustive checkings
+
+
+
+} 
+
+fnProcessEvent(process)
+
+
+
+
+
+// function updateUser(user, updates) {
+//   return {
+//     ...user,
+//     ...updates
+//   }
+// }
+
+// const user = {
+//   name: "Moises",
+//   age: 21,
+//   role: "engineer"
+// }
+
+// const updated = updateUser(user, { age: 22 })
+
+// console.log(updated)
