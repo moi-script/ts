@@ -61,8 +61,28 @@ function clickForm() : void {
 
 // Conversion
 
-const button = document.getElementById("loginBtn")
+// const button = document.getElementById("loginBtn")
+const button = document.getElementById("loginBtn") as HTMLButtonElement
+// button.addEventListener("click", function () {
+//   console.log("Login clicked")
+// })
 
-button.addEventListener("click", function () {
-  console.log("Login clicked")
-})
+function clickSimpleButton() : void {
+    button.addEventListener("click", function () {
+        console.log("BUtton clicked")
+    })
+}
+
+
+// const input = document.querySelector("#username")
+
+const input = document.querySelector("#username") as HTMLInputElement
+// input.addEventListener("input", (e) => {
+//   console.log(input.value)
+// })
+
+function clickInput() : void {
+    input.addEventListener('submit', (e : SubmitEvent) => {
+        console.log("Value ::  --> ", input.value)
+    } )
+}
