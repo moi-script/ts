@@ -201,3 +201,50 @@ function addListItemBtnFn(): void {
 
     }
 }
+
+
+
+
+const profileForm = document.getElementById('profile-form') as HTMLFormElement;
+const nameInput = document.getElementById('username') as HTMLInputElement;
+const ageInput = document.getElementById('age') as HTMLInputElement;
+const isPublicCheckbox = document.getElementById('is-public') as HTMLInputElement;
+const previewArea = document.getElementById('preview') as HTMLInputElement;
+
+
+
+function submitProfile() : void {
+    profileForm.onsubmit = (e : SubmitEvent) => {
+        e.preventDefault();
+
+        
+      const name = nameInput.value;
+      const age = ageInput.valueAsNumber; // Get value as a number directly
+      const isPublic = isPublicCheckbox.checked;
+      
+      previewArea.innerHTML = `
+        <h4>Preview:</h4>
+        <p>Name: ${name}</p>
+        <p>Age: ${age} (${age >= 18 ? 'Adult' : 'Minor'})</p>
+        <p>Privacy: ${isPublic ? 'Public' : 'Private'}</p>
+      ` as string;
+      
+
+
+    }
+}
+
+// profileForm.onsubmit = (event) => {
+//   event.preventDefault();
+  
+//   const name = nameInput.value;
+//   const age = ageInput.valueAsNumber; // Get value as a number directly
+//   const isPublic = isPublicCheckbox.checked;
+
+//   previewArea.innerHTML = `
+//     <h4>Preview:</h4>
+//     <p>Name: ${name}</p>
+//     <p>Age: ${age} (${age >= 18 ? 'Adult' : 'Minor'})</p>
+//     <p>Privacy: ${isPublic ? 'Public' : 'Private'}</p>
+//   `;
+// };
